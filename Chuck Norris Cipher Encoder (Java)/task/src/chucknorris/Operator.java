@@ -1,12 +1,18 @@
 package chucknorris;
 
-
 public class Operator {
 
-    Selector selector;
-    Encoder encoder = new Encoder();
-    Decoder decoder = new Decoder();
-    CheckValid checkValid = new CheckValid();
+    private Selector selector;
+    private final Encoder encoder;
+    private final Decoder decoder;
+    private final CheckValid checkValid;
+
+    // Constructor Injection
+    public Operator(Encoder encoder, Decoder decoder, CheckValid checkValid) {
+        this.encoder = encoder;
+        this.decoder = decoder;
+        this.checkValid = checkValid;
+    }
 
     public void start() {
 
@@ -31,7 +37,6 @@ public class Operator {
             selector.printResult();
             System.out.println(result);
         }
-
     }
 
     public void setSelector(String selector) {
